@@ -22,6 +22,8 @@ public class Thread {
 	private Long id;
 	@Size(min = 2, max = 20)
 	private String title;
+	@Size(min = 1)
+	private List<String> tags;
 	// This will not allow the createdAt column to be updated after creation
 	private Date createdAt;
 	private Date updatedAt;
@@ -33,6 +35,12 @@ public class Thread {
 	private List<Message> messages;
 	
 	public Thread() {}
+	
+	public Thread(String title, List<String> tags, User author) {
+		this.tags = tags;
+		this.title = title;
+		this.author = author;
+	}
 
 	public Long getId() {
 		return id;
@@ -48,6 +56,14 @@ public class Thread {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
 	public Date getCreatedAt() {
